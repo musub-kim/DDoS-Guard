@@ -28,7 +28,7 @@
 | 5 | Timeout 조정 | Timeout, RequestReadTimeout 설정 | 느린 요청/응답 차단 | 필수 | Timeout 10 <BR>RequestReadTimeout header=10-20,MinRate=500 |
 | 6 | HTTP Method 제한 | <LimitExcept\> 블록 사용 | 허용된 메서드만 허용 | 필수 | <LimitExcept GET POST HEAD\><BR>   Deny from all <BR></LimitExcept\> |
 | 7 | User-Agent 필터링 | SetEnvIfNoCase + Deny | 비정상 User-Agent 차단 | 권고 | SetEnvIfNoCase User-Agent "curl" bad_bot <BR>Order Allow,Deny <BR>Allow from all <BR>Deny from env=bad_bot |
-| 8 | 요청 속도 제한 (mod_ratelimit) | mod_ratelimit 사용 | 응답 전송 속도 제한으로 과도한 요청 억제 | 권고 | SetOutputFilter RATE_LIMIT <BR>SetEnv rate-limit 400 |
+| 8 | 요청 속도 제한(mod_ratelimit) | mod_ratelimit 사용 | 응답 전송 속도 제한으로 과도한 요청 억제 | 권고 | SetOutputFilter RATE_LIMIT <BR>SetEnv rate-limit 400 |
 | 9 | 로그 포맷 강화 | LogFormat 수정 | 요청, 응답 크기, User-Agent 포함해 추적성 강화 | 권고 | LogFormat "%h %l %u %t \\"%r\\" %>s %b \\"%{Referer}i\\" \\"%{User-Agent}i\\"" combined |
 
 ## Load Balancer
