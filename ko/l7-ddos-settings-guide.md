@@ -4,7 +4,7 @@
 
 ## Nginx
 
-| 번호 | 항목 | 설정 방법 | 내용 | 우선 순위 | 예시 |
+| 번호 | 항목 | 설정 방법 | 내용 | 우선순위 | 예시 |
 | --- | --- | --- | ---- | ---- | ---- |
 | 1 | 요청 속도 제한(Rate Limit) | limit_req_zone / limit_req 설정 | IP별 초당 요청 수 제한으로 과도한 HTTP 요청 방어 | 필수 | http {<BR>   limit_req_zone $binary_remote_addr zone=req_limit_per_ip:10m rate=5r/s; <BR>} server {<BR>   limit_req zone=req_limit_per_ip burst=10 nodelay; <BR>} |
 | 2 | 동시 연결 제한(Connection Limit) | limit_conn_zone / limit_conn 설정 | 하나의 IP에서 동시에 맺을 수 있는 연결 수 제한 | 필수 | http {<BR>   limit_conn_zone $binary_remote_addr zone=conn_limit_per_ip:10m; <BR>} server {<BR>   limit_conn conn_limit_per_ip 10; <BR>} |
