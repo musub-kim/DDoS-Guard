@@ -19,7 +19,7 @@
 
 ## Apache
 
-| 번호 | 항목 | 설정 방법 | 내용 | 우선 순위 | 예시 |
+| 번호 | 항목 | 설정 방법 | 내용 | 우선순위 | 예시 |
 | --- | --- | --- | ---- | ---- | ---- |
 | 1 | mod_evasive 설정 | yum install mod_evasive 후 /etc/httpd/conf.d/mod_evasive.conf 설정 | 짧은 시간 내 다수 요청 IP 자동 차단 | 필수 | DOSPageCount 2 <BR>DOSSiteCount 50 <BR>DOSBlockingPeriod 10 |
 | 2 | mod_qos 설정 | yum install mod_qos 후 /etc/httpd/conf.d/mod_qos.conf | IP별 최대 연결 수 및 요청 수 제한 | 필수 | QS_SrvMaxConnPerIP 10 <BR>QS_SrvMaxConnClose 20 <BR>QS_SrvRequestRate 5 |
