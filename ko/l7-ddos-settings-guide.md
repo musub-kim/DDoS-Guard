@@ -14,7 +14,7 @@
 | 6 | 요청 대기 시간 제한 | client_header_timeout, send_timeout 설정 | 느린 요청(Slow HTTP) 공격 방어 | 필수 | client_header_timeout 10s; <BR>send_timeout 10s; |
 | 7 | HTTP Method 제한 | if문으로 허용된 메서드만 제한 | 불필요한 메서드(TRACE, PUT 등) 요청 차단 | 권고 | if ($request_method !~ ^(GET\|POST\|HEAD)$) { return 444; } |
 | 8 | 비정상 User-Agent 차단 | 정규식으로 User-Agent 필터링 | 스캐너, 봇, curl 등 자동화 툴 접근 차단 | 권고 | if ($http_user_agent ~* (masscan\|curl\|python\|nmap)) { return 403; } |
-| 9 | 상태 모니터링 | stub_status 설정 | 실시간 요청/세션 수 확인 (운영 점검용) | 권고 | location /nginx_status {<BR>   stub_status;<BR>   allow 127.0.0.1;<BR>   deny all; <BR>} |
+| 9 | 상태 모니터링 | stub_status 설정 | 실시간 요청/세션 수 확인(운영 점검용) | 권고 | location /nginx_status {<BR>   stub_status;<BR>   allow 127.0.0.1;<BR>   deny all; <BR>} |
 | 10 | 캐싱 설정 | proxy_cache 설정 | 동일 요청 캐싱으로 백엔드 부하 감소 | 권고 | proxy_cache_path /tmp/nginx_cache levels=1:2 keys_zone=my_cache:10m; <BR>location / {<BR>   proxy_cache my_cache;<BR>   proxy_cache_use_stale error timeout updating; <BR>} |
 
 ## Apache
